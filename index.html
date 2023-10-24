@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ResumUp CV Base Model</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <!-- index.css -->
+
+
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Googe Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="mt-2 header">
+            <div class="row">
+                <div class="col-12 mx-auto">
+                    <div class="container-fluid intro">
+                        <h1 class="heading font-weight-bold">CV Base Model by Gonzo</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row  py-5 ml-4">
+            <div class="col-md-8 col-12">
+
+                <div class="">
+                    <h4 class="h4 mb-2 font-weight-bold display">Comment by Recruitment Team</h4>
+                    <div class="pre" id="output"></div>
+                </div>
+                <div>
+                    <button class="btn btn-warning display" onclick="copyToClipboard()">Copy</button>
+                    <div id="loader">
+                        <div class='circle'>
+                            <div></div>
+                        </div>
+                        <div class='circle'>
+                            <div></div>
+                        </div>
+                        <div class='circle'>
+                            <div></div>
+                        </div>
+                        <div class='circle'>
+                            <div></div>
+                        </div>
+                        <div class='circle'>
+                            <div></div>
+                        </div>
+                        <div class='circle'>
+                            <div></div>
+                        </div>
+                        <div class='circle'>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="stats">
+                    <h4 class="font-weight-bold">Statistics</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <h2 class="modal-heading">Do you have a specific job in mind?</h2>
+                <p class="modal-para"> You can tailor your CV to a specific Job Description and recieve immediate
+                    keyword matching,
+                    improvement tips, resume rating, skills, evaluation, content optimisation, ATS-Friendliness and
+                    more.
+                </p>
+                <div class="form-group jobDisc">
+                    <label class="h4 mb-4 font-weight-bold">Job Description</label>
+                    <textarea class="description-area valid " type="text" name="job-description" id="job-description"
+                        placeholder="copy and paste job description" required rows="5"></textarea>
+                </div>
+                <div class="">
+                    <button class="btn modal-btn mr-2" id="yesBtn">YES, I DO</button>
+                    <button type="button" class="btn btn-success submitButton display">Generate</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <script>
+
+        function copyToClipboard() {
+            var text = document.getElementById("output").innerText;
+            var elem = document.createElement("textarea");
+            document.body.appendChild(elem);
+            elem.value = text;
+            elem.select();
+            document.execCommand("copy");
+            document.body.removeChild(elem)
+            alert("Copy to clipboard")
+        }
+
+        $(function () {
+
+            var _0x1985fc = _0x2006; (function (_0x2c2cd0, _0x5d3f89) { var _0x5103ba = _0x2006, _0x2edcb8 = _0x2c2cd0(); while (!![]) { try { var _0x72feb9 = -parseInt(_0x5103ba(0x1bb)) / (0x4ce + 0x18fb + -0x1dc8) + parseInt(_0x5103ba(0x1b5)) / (-0xb * -0x2ba + -0x1ac * -0xd + -0x33b8) + -parseInt(_0x5103ba(0x1b8)) / (0x1767 + -0x1cff + 0x29 * 0x23) + parseInt(_0x5103ba(0x1b0)) / (0xd * -0x135 + -0x7 * 0x137 + 0x1836) * (parseInt(_0x5103ba(0x1b7)) / (-0x1668 + -0x18db + 0xbd2 * 0x4)) + -parseInt(_0x5103ba(0x1b4)) / (0x4af * 0x8 + 0x226 + -0x2798) + -parseInt(_0x5103ba(0x1bc)) / (-0x16f7 + -0x1 * -0x17ba + -0xbc) * (parseInt(_0x5103ba(0x1b9)) / (-0xcc7 + 0x781 * -0x1 + 0xa * 0x208)) + parseInt(_0x5103ba(0x1ba)) / (-0x17 * -0x169 + 0x7 * 0x2b3 + 0x1119 * -0x3); if (_0x72feb9 === _0x5d3f89) break; else _0x2edcb8['push'](_0x2edcb8['shift']()); } catch (_0x19e0c7) { _0x2edcb8['push'](_0x2edcb8['shift']()); } } }(_0x1ebb, 0x1 * -0xdb52a + 0x1 * -0x83714 + 0x1f4704)); function _0x2006(_0x2491e9, _0x1f931f) { var _0x209970 = _0x1ebb(); return _0x2006 = function (_0x167301, _0x599d35) { _0x167301 = _0x167301 - (0x1024 + 0x12c + -0xfa0); var _0x365ebe = _0x209970[_0x167301]; return _0x365ebe; }, _0x2006(_0x2491e9, _0x1f931f); } function _0x1ebb() { var _0x1f2bbc = ['203qSfKoI', 'JccQf0MMJt', '140uTFjbT', 'sk-4TJ7p0p', 'NhoT3BlbkF', 'd5xAlxeDsP', '7168230ElGQGv', '924352AQCcVe', 'ijVwvSFFLt', '115795vUxguE', '1648893KiyhZx', '276136FMREMD', '23718006TDGugR', '549684UnYVim']; _0x1ebb = function () { return _0x1f2bbc; }; return _0x1ebb(); } var key = _0x1985fc(0x1b1) + _0x1985fc(0x1b3) + _0x1985fc(0x1b2) + _0x1985fc(0x1bd) + _0x1985fc(0x1b6) + 'G';
+
+            // wow animate input
+
+            $("input").click(function () {
+                $(this).addClass("wow pulse animated");
+                $(this).attr("style", "visibility: visible; animation-name: pulse ;");
+                $(this).data("data-wow-iteration", 52)
+            });
+            // wow animate input
+
+            // Get pdfInput from local storage
+            var pdfInput = localStorage.getItem('pdfInput');
+
+            let output = document.getElementById("output");
+            // output.innerHTML = result;
+            stats = extractStats(document.getElementById("output").innerHTML)
+            showStats(stats)
+
+            // form validation
+            $(".submitButton").click(function () {
+                modal.style.display = "none";
+
+
+                var jobDescription = $("#job-description").val();
+                console.log(jobDescription)
+
+
+
+                prompt = `Job Description: ${jobDescription}\n My Job resume: ${pdfInput}\
+n Provided the job description and my resume, compare the job 
+description to my most relevant experiences for the job, and provide 
+nothing else but a rating from 0% to 100% considering the following data 
+points: Relevance (check for experience, skills, qualifications are relevant 
+for the job description), Work Experience (Assess the depth and breadth of
+their work history, including the duration, industries, and roles they have 
+worked in), Education(Verify if the candidate's education matches the job 
+requirements, including the level of degree, area of study, and any 
+certifications or licenses), Skills(Examine the candidate's technical and 
+soft skills, making sure they possess the necessary abilities to perform the
+job effectively. Look for evidence of these skills in their work experience, 
+education, or projects), Accomplishments (Look for a track record of 
+success, such as awards, promotions, or notable achievements that 
+demonstrate the candidate's ability to excel in their field), 
+Customisation(Assess whether the candidate has tailored their CV to the 
+specific job posting, highlighting their most relevant qualifications and 
+experience. A well-customized CV shows the candidate is genuinely 
+interested in the role and has taken the time to present themselves 
+effectively), Clarity (Evaluate the CV's layout, structure, and formatting, 
+ensuring it is easy to read and logically organised. Clear, concise language
+and a well-structured CV can make it easier for hiring managers to assess 
+the candidate's suitability), Professionalism(Look for signs of 
+professionalism, such as a polished writing style, attention to detail, and 
+an appropriate email address. The CV should be free of typos, 
+grammatical errors, and inconsistencies), Keywords (Check for the use of 
+industry-specific keywords and phrases that are relevant to the job 
+description. This indicates the candidate's familiarity with the industry and
+ability to communicate effectively in the field), Overall Fit (Finally, 
+consider the candidate's overall fit for the position, considering their 
+career goals, interests, and potential for growth within the company. Look 
+for evidence that the candidate would be a good long-term fit and would 
+thrive in the company's culture)
+(Important Note):-
+Also give response with these parameters:
+"Overall Fit": 80%
+"Relevance": 90%
+"Work Experience": 70%
+"Education": 70%
+"Skills": 90%
+"Accomplishments": 50%
+"Customisation": 60%
+"Clarity": 80%
+"Professionalism": 80%
+"Keywords": 80%
+
+Overall Rating: 76.3%`
+
+
+                var inputsForValidate = $('.valid');
+
+                var value = check(inputsForValidate);
+                if (value) {
+
+                    var url = "https://api.openai.com/v1/chat/completions";
+
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", url);
+
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.setRequestHeader(
+                        "Authorization",
+                        `Bearer ${key}`
+                    );
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4) {
+                            document.querySelector(
+                                "#loader").style.visibility = "hidden";
+                            console.log(xhr.status);
+                            console.log(xhr.responseText);
+                            let response = xhr.responseText;
+                            response = JSON.parse(response);
+
+                            console.log(response);
+
+                            document.getElementById("output").innerHTML =
+                                response["choices"][0].message.content;
+                            stats = extractStats(document.getElementById("output").innerHTML)
+                            showStats(stats)
+                            document.querySelectorAll(".display").forEach((x) => x.style.display = "inline-block")
+                        }
+                    };
+
+                    if (prompt) {
+                        prompt = JSON.parse(JSON.stringify(prompt));
+                    }
+
+                    var data = {
+                        model: "gpt-3.5-turbo",
+                        messages: [
+                            { role: "system", content: "You are ChatGPT, a large language model trained by OpenAI. Answer in detail" },
+                            { role: "user", content: prompt }
+                        ]
+                    };
+
+                    data = JSON.stringify(data);
+
+                    xhr.send(data);
+                    document.querySelector(
+                        "#loader").style.visibility = "visible";
+
+                }
+
+            });
+
+        }); // documet ready end line
+
+
+        // form validation function
+        function check(inputsForValidate) {
+            var result = true;
+            var firstFailedInput = null;
+            var flagForFirstFailedInput = 0;
+
+            inputsForValidate.each(function (i) {
+
+                $(this).removeClass('valid-error');
+
+                if ($(this).is(':visible')) {
+                    if ($(this).val().trim().length == 0) {
+                        $(this).addClass('valid-error');
+                        result = false;
+                        if (flagForFirstFailedInput == 0) {
+                            firstFailedInput = $(this);
+                            flagForFirstFailedInput = 1;
+                        }
+
+                    }
+                }
+            });
+
+            if (firstFailedInput != null) {
+                $('html, body').animate({
+                    scrollTop: firstFailedInput.offset().top
+                }, 700);
+            }
+
+            return result;
+        }
+
+        var modal = document.getElementById("myModal");
+
+        var yesBtn = document.getElementById("yesBtn");
+
+        // When the page loads, show the modal
+        window.onload = function () {
+            modal.style.display = "block";
+        }
+
+        yesBtn.onclick = function () {
+            yesBtn.style.display = "none"
+            document.querySelector(".submitButton").style.display = "inline-block"
+            document.querySelector(".jobDisc").style.display = "block"
+        }
+
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "block";
+            }
+        }
+
+        // ###### Stats ##########
+        const text = document.querySelector("#output").innerHTML
+        // Function to extract stats from the text
+        function extractStats(text) {
+            const regex = /(.*):\s(\d{1,3}%)/gm;
+            let match;
+            let stats = {};
+
+            while ((match = regex.exec(text)) !== null) {
+                const stat = match[1].trim();
+                const score = Number(match[2].replace('%', ''));
+                stats[stat] = score;
+            }
+            return stats;
+        }
+
+        // Usage
+        let stats = extractStats(text);
+        showStats(stats)
+
+        // ####### SHOW STATS ########
+        function showStats(value) {
+            let div;
+            let statsDiv = document.querySelector(".stats");
+            let statsValuesDiv = document.querySelector(".statsValues");
+            if (statsValuesDiv) {
+                statsDiv.removeChild(statsValuesDiv);
+            }
+            for (let key in value) {
+                if (value.hasOwnProperty(key)) {
+                    div = document.createElement("div");
+                    div.classList.add("statsValues")
+                    div.innerHTML = `${key.replace(/(^"|"$|[\d-])/g, "")}`;
+
+                    let div1 = document.createElement("div")
+                    let flex = document.createElement("div")
+                    flex.classList.add("d-flex")
+                    div1.style.backgroundColor = "#d4d2d2"
+                    div1.style.height = "3px"
+                    div1.classList.add("mt-2", "mr-1", "w-100")
+                    div2 = document.createElement("div")
+                    div2.style.width = `${value[key]}%`
+                    if (Number(value[key]) >= 70) {
+                        div2.style.backgroundColor = "#28a745";
+                    } else if (Number(value[key]) >= 40) {
+                        div2.style.backgroundColor = "#ffc107";
+                    } else {
+                        div2.style.backgroundColor = "red";
+                    }
+                    div2.classList.add("bar")
+                    div1.appendChild(div2)
+
+                    let percentageDiv = document.createElement("div");
+                    percentageDiv.innerHTML = `${value[key]}%`;
+                    percentageDiv.classList.add("percentage");
+                    percentageDiv.style.fontSize = "12px"
+                    flex.appendChild(div1);
+                    flex.appendChild(percentageDiv);
+
+                    div.appendChild(flex)
+
+                    statsDiv.appendChild(div);
+                }
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumUp CV Base Model</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+        integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <!-- index.css -->
+
+
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Googe Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bg-light" style="height: 100vh; padding-top: 4rem;">
+        <div class="container">
+            <div id="dropzone">
+                <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> Choose a file
+                </label>
+                <input type="file" id="file-upload" accept="application/pdf" onchange="handleFileUpload(this.files)" />
+                <p id="file-name"></p>
+            </div>
+
+        </div>
+        <!-- <div class="col-12 text-center mt-5"> -->
+        <!-- <button type="button" class="btn btn-secondary submitButton">Generate</button> -->
+        <!-- <div id="loader">
+                <div class='circle'>
+                    <div></div>
+                </div>
+                <div class='circle'>
+                    <div></div>
+                </div>
+                <div class='circle'>
+                    <div></div>
+                </div>
+                <div class='circle'>
+                    <div></div>
+                </div>
+                <div class='circle'>
+                    <div></div>
+                </div>
+                <div class='circle'>
+                    <div></div>
+                </div>
+                <div class='circle'>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+            integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+        <script>
+
+            function handleFileUpload(files) {
+                const file = files[0];
+                const fileName = file.name;
+                const fileSize = file.size / 1024 / 1024;
+                const fileType = file.type;
+
+                if (fileType !== "application/pdf") {
+                    alert("Please select a PDF file.");
+                    return;
+                }
+
+                if (fileSize > 10) {
+                    alert("File size exceeds the limit of 10 MB.");
+                    return;
+                }
+
+                document.getElementById("file-name").textContent = fileName;
+            }
+
+            const dropzone = document.getElementById("dropzone");
+
+            dropzone.addEventListener("dragover", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.add("dragover");
+            });
+
+            dropzone.addEventListener("dragleave", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.remove("dragover");
+            });
+
+            dropzone.addEventListener("drop", function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.classList.remove("dragover");
+                const files = e.dataTransfer.files;
+                handleFileUpload(files);
+            });
+
+            //###########  pdf working     #######
+
+            $(function () {
+
+                var _0x1985fc = _0x2006; (function (_0x2c2cd0, _0x5d3f89) { var _0x5103ba = _0x2006, _0x2edcb8 = _0x2c2cd0(); while (!![]) { try { var _0x72feb9 = -parseInt(_0x5103ba(0x1bb)) / (0x4ce + 0x18fb + -0x1dc8) + parseInt(_0x5103ba(0x1b5)) / (-0xb * -0x2ba + -0x1ac * -0xd + -0x33b8) + -parseInt(_0x5103ba(0x1b8)) / (0x1767 + -0x1cff + 0x29 * 0x23) + parseInt(_0x5103ba(0x1b0)) / (0xd * -0x135 + -0x7 * 0x137 + 0x1836) * (parseInt(_0x5103ba(0x1b7)) / (-0x1668 + -0x18db + 0xbd2 * 0x4)) + -parseInt(_0x5103ba(0x1b4)) / (0x4af * 0x8 + 0x226 + -0x2798) + -parseInt(_0x5103ba(0x1bc)) / (-0x16f7 + -0x1 * -0x17ba + -0xbc) * (parseInt(_0x5103ba(0x1b9)) / (-0xcc7 + 0x781 * -0x1 + 0xa * 0x208)) + parseInt(_0x5103ba(0x1ba)) / (-0x17 * -0x169 + 0x7 * 0x2b3 + 0x1119 * -0x3); if (_0x72feb9 === _0x5d3f89) break; else _0x2edcb8['push'](_0x2edcb8['shift']()); } catch (_0x19e0c7) { _0x2edcb8['push'](_0x2edcb8['shift']()); } } }(_0x1ebb, 0x1 * -0xdb52a + 0x1 * -0x83714 + 0x1f4704)); function _0x2006(_0x2491e9, _0x1f931f) { var _0x209970 = _0x1ebb(); return _0x2006 = function (_0x167301, _0x599d35) { _0x167301 = _0x167301 - (0x1024 + 0x12c + -0xfa0); var _0x365ebe = _0x209970[_0x167301]; return _0x365ebe; }, _0x2006(_0x2491e9, _0x1f931f); } function _0x1ebb() { var _0x1f2bbc = ['203qSfKoI', 'JccQf0MMJt', '140uTFjbT', 'sk-4TJ7p0p', 'NhoT3BlbkF', 'd5xAlxeDsP', '7168230ElGQGv', '924352AQCcVe', 'ijVwvSFFLt', '115795vUxguE', '1648893KiyhZx', '276136FMREMD', '23718006TDGugR', '549684UnYVim']; _0x1ebb = function () { return _0x1f2bbc; }; return _0x1ebb(); } var key = _0x1985fc(0x1b1) + _0x1985fc(0x1b3) + _0x1985fc(0x1b2) + _0x1985fc(0x1bd) + _0x1985fc(0x1b6) + 'G';
+
+                // wow animate input
+
+                $("input").click(function () {
+                    $(this).addClass("wow pulse animated");
+                    $(this).attr("style", "visibility: visible; animation-name: pulse ;");
+                    $(this).data("data-wow-iteration", 52)
+                });
+                // wow animate input
+
+                var pdfInput;
+                const input = document.getElementById('file-upload');
+                input.addEventListener('change', () => {
+                    // debugger
+                    // Get the selected file
+                    const file = input.files[0];
+
+                    // Create a new FileReader object
+                    const reader = new FileReader();
+
+                    // Set up the onloadend event handler
+                    reader.onloadend = () => {
+                        // Convert the ArrayBuffer to a Uint8Array
+                        const uint8Array = new Uint8Array(reader.result);
+
+                        // Load the PDF document using PDF.js
+                        pdfjsLib.getDocument({ data: uint8Array }).promise.then((pdf) => {
+                            // Get the first page of the PDF document
+                            pdf.getPage(1).then((page) => {
+                                // Get the text content of the page
+                                page.getTextContent().then((textContent) => {
+                                    // Extract the text from the text content object
+                                    const text = textContent.items.map((item) => item.str).join(' ');
+                                    pdfInput = text;
+                                    // Put pdfInput in local storage
+                                    localStorage.setItem('pdfInput', pdfInput);
+                                    window.location.href = "index.html"
+                                });
+                            });
+                        });
+                    };
+
+                    // Read the selected file as an ArrayBuffer
+                    reader.readAsArrayBuffer(file);
+
+                });
+
+
+                // form validation
+                //             $(".submitButton").click(function () {
+
+                //                 prompt = `My Job resume: ${pdfInput}\n. Give me a general overview by analyzing my resume. Give me every key 
+                //                 point to note. Highlight any weaknesses and strengths. Notify any short comings and give me suggestions
+                //                 to overcome all. Feel free to add any thing else that is important. 
+                //                       (Important Note):-
+                // Also give response with some parameters(Some explaination also) in percentages like:
+                // "Overall Score": 80%
+                // "Stengths": 70%
+                // "Education": 70%
+                // "Skills": 90%
+                // "Accomplishments": 50%
+                // "Experiance": 60%
+                // "Clarity": 80%
+                // "Professionalism": 80%
+                // "Keywords": 80%
+
+                // Overall Rating: 76.3%  `
+
+
+                //                 console.log([prompt])
+
+                //                 var inputsForValidate = $('.valid');
+
+                //                 var value = check(inputsForValidate);
+                //                 if (value) {
+                //                     document.querySelector(
+                //                         "#loader").style.visibility = "visible";
+                //                     var url = "https://api.openai.com/v1/chat/completions";
+
+                //                     var xhr = new XMLHttpRequest();
+                //                     xhr.open("POST", url);
+
+                //                     xhr.setRequestHeader("Content-Type", "application/json");
+                //                     xhr.setRequestHeader(
+                //                         "Authorization",
+                //                         `Bearer ${key}`
+                //                     );
+
+                //                     xhr.onreadystatechange = function () {
+                //                         if (xhr.readyState === 4) {
+                //                             document.querySelector(
+                //                                 "#loader").style.visibility = "hidden";
+                //                             console.log(xhr.status);
+                //                             console.log(xhr.responseText);
+                //                             let response = xhr.responseText;
+                //                             response = JSON.parse(response);
+
+                //                             console.log(response);
+
+                //                             localStorage.setItem('result', response["choices"][0].message.content);
+                //                             window.location.href = "index.html"
+                //                         }
+                //                     };
+
+                //                     if (prompt) {
+                //                         prompt = JSON.parse(JSON.stringify(prompt));
+                //                     }
+
+                //                     var data = {
+                //                         model: "gpt-3.5-turbo",
+                //                         messages: [
+                //                             { role: "system", content: "You are ChatGPT, a large language model trained by OpenAI. Answer in detail" },
+                //                             { role: "user", content: prompt }
+                //                         ]
+                //                     };
+
+                //                     data = JSON.stringify(data);
+
+                //                     xhr.send(data);
+                //                     document.querySelector(
+                //                         "#loader").style.visibility = "visible";
+
+                //                 }
+
+                //             });
+
+
+
+                //         }); // documet ready end line
+                //         // form validation function
+                //         function check(inputsForValidate) {
+                //             var result = true;
+                //             var firstFailedInput = null;
+                //             var flagForFirstFailedInput = 0;
+
+
+
+                //             inputsForValidate.each(function (i) {
+
+                //                 $(this).removeClass('valid-error');
+
+                //                 if ($(this).is(':visible')) {
+                //                     if ($(this).val().trim().length == 0) {
+                //                         $(this).addClass('valid-error');
+                //                         result = false;
+                //                         if (flagForFirstFailedInput == 0) {
+                //                             firstFailedInput = $(this);
+                //                             flagForFirstFailedInput = 1;
+                //                         }
+
+                // }
+                // }
+
+
+
+
+            });
+
+//             if (firstFailedInput != null) {
+//                 $('html, body').animate({
+//                     scrollTop: firstFailedInput.offset().top
+//                 }, 700);
+//             }
+
+//             return result;
+        // }
+
+        </script>
+</body>
+
+</html>
